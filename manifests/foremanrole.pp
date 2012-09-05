@@ -1,6 +1,6 @@
 class puppetmaster::foremanrole {
     file {"/usr/share/foreman/app/views/hosts/_list.html.erb":
-        source => 'puppet:///puppetmaster/usr/share/foreman/app/views/hosts/_list.html.erb',
+        source => 'puppet:///modules/puppetmaster/usr/share/foreman/app/views/hosts/_list.html.erb',
         ensure => file,
         replace => true,
         owner => 'foreman',
