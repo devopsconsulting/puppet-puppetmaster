@@ -5,4 +5,15 @@ class puppetmaster::version {
     package {"puppetmaster":
         ensure => latest,
     }
+
+    package {"misc-pierrot":
+        ensure => latest,
+        notify => Exec["pierrot-setup"],
+    }
+
+    exec {"pierrot-setup":
+        command => "/usr/lib/pierrot/setup-puppetmaster.sh",
+        refreshonly => true,
+        timeout => 0,
+    }
 }
