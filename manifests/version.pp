@@ -2,7 +2,15 @@
 class puppetmaster::version {
     require puppet::version
 
-    package {"puppetmaster":
+    case $::operatingsystem {
+        Debian,Ubuntu: {
+            $puppermaster_package = "puppermaster"
+        }
+        Centos,Fedora: {
+            $puppermaster_package = "puppet-server"
+        }
+    }
+    package {$puppetmaster_package:
         ensure => latest,
     }
 
