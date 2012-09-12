@@ -1,10 +1,10 @@
-# last tested version : 2.7.17
+# last tested version : 2.7.19
 class puppetmaster::version {
     require puppet::version
 
     case $::operatingsystem {
         'Debian','Ubuntu': {
-            $puppetmaster_package = "puppermaster"
+            $puppetmaster_package = "puppetmaster"
         }
         'Centos','Fedora': {
             $puppetmaster_package = "puppet-server"
