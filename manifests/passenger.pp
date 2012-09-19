@@ -41,5 +41,18 @@ class puppetmaster::passenger {
       source => 'puppet:///modules/puppetmaster/config.ru',
       notify => Exec['restart_puppet'],
   }
+  # this is needed so passenger has the correct permissions
+  file { 
+      "/var/lib/puppet/reports":
+      owner => 'puppet',
+      mode => 640,
+      ensure => "directory"
+  }
+  file { 
+      "/var/log/puppet/http.log":
+      owner => 'puppet',
+      mode => 644,
+      ensure => "file"
+  }
 
 }
