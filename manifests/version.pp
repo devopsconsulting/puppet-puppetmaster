@@ -11,8 +11,19 @@ class puppetmaster::version {
         }
     }
 
+    package {"puppetmaster-common":
+        ensure => "2.7.19-1puppetlabs2",
+    }
+
     package {$puppetmaster_package:
-        ensure => latest,
+        case $::operatingsystem {
+            'Debian','Ubuntu': {
+               require => Package["puppetmaster-common"],
+               ensure => "2.7.19-1puppetlabs2",
+            }
+            'Centos','Fedora': {
+               ensure => "latest",
+            }
     }
 
     package {"misc-pierrot":
