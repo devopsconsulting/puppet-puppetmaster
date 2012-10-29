@@ -12,16 +12,6 @@ class puppetmaster::mysqldb {
         }
     
         Class["mysql::server"] -> Class["mysql::ruby"] -> Class["puppetmaster::mysqldb"]
-       
-        file {"foreman-config-directory":
-            ensure => directory,
-            name => "/etc/foreman",
-        }
-        
-        file {'foremand-db-config':
-          name => '/etc/foreman/database.yml',
-          content => template('foreman/database.yaml.erb'),
-        }
 
     }
 }
