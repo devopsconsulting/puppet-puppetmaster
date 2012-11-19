@@ -10,4 +10,8 @@ class puppetmaster::deploy {
         ensure => running,
         require => Package["python-avira.deploy.d"]
     }
+    
+    package { "python-avira.deployplugin.cloudstack":
+        ensure => latest
+    }
 }
