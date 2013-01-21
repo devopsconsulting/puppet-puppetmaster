@@ -17,8 +17,7 @@ class puppetmaster::passenger {
 
   class {'apache::mod::passenger': }
   class {'apache::mod::ssl': } 
-  class {'apache::mod::headers': } 
-
+  apache::mod { 'headers': }
 
   file {'puppet_vhost':
     path    => "${conf_dir}/puppet.conf",
