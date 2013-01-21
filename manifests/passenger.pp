@@ -1,7 +1,5 @@
 class puppetmaster::passenger {
-  include apache::ssl
   include apache::params
-  include ::passenger
 
   $app_root = '/etc/puppet/rack'
   $conf_dir = '/etc/apache2/conf.d'
@@ -15,15 +13,16 @@ class puppetmaster::passenger {
     }
   }
 
-  class {'apache':  } ->
+  class {'apache':  }
 
-  class {'apache::mod::passenger': } 
+  class {'apache::mod::passenger': }
+  class {'apache::mod::ssl': } 
+
 
   file {'puppet_vhost':
     path    => "${conf_dir}/puppet.conf",
     content => template('puppetmaster/puppet-vhost.conf.erb'),
     mode    => '0644',
-    notify  => Service['httpd'],
   } ->
 
   file {
@@ -36,7 +35,6 @@ class puppetmaster::passenger {
     "${app_root}/config.ru":
       owner  => 'puppet',
       source => 'puppet:///modules/puppetmaster/config.ru',
-      notify => Service['httpd']
   }
 
   # this is needed so passenger has the correct permissions
