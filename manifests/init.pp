@@ -4,5 +4,6 @@ class puppetmaster {
     class {"puppetmaster::mysqldb": } ->
     class {"puppetmaster::rails": } -> 
     class {"puppetmaster::passenger": } -> 
-    class {"puppetmaster::deploy": }
+    class {"puppetmaster::deploy": } ->
+    class {"puppetmaster::foreman": }
 }

@@ -10,6 +10,13 @@ class puppetmaster::mysqldb {
           host     => 'localhost',
           grant    => ['all'],
         }
+
+        mysql::db { 'foreman':
+          user     => 'foreman',
+          password => 'namerof',
+          host     => 'localhost',
+          grant    => ['all'],
+        }
     
         Class["mysql::server"] -> Class["mysql::ruby"] -> Class["puppetmaster::mysqldb"]
 

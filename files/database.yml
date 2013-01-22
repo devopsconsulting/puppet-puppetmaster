@@ -1,0 +1,6 @@
+production:
+  adapter: mysql
+  database: foreman
+  username: foreman
+  password: namerof 
+  host: localhost
