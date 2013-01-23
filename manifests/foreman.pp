@@ -17,11 +17,18 @@ class puppetmaster::foreman {
     } ->
 
    file {"/usr/share/foreman/app/views/hosts/_list.html.erb":
-        source => 'puppet:///puppetmaster/usr/share/foreman/app/views/hosts/_list.html.erb',
+        source => 'puppet:///modules/puppetmaster/usr/share/foreman/app/views/hosts/_list.html.erb',
         ensure => file,
         replace => true,
         owner => 'foreman',
         group => 'foreman',
+        mode => '0644',
+    } ->
+
+   file {"/usr/lib/ruby/1.8/puppet/reports/foreman.rb":
+        source => 'puppet:///modules/puppetmaster/foreman.rb',
+        ensure => file,
+        replace => true,
         mode => '0644',
     } ->
 
