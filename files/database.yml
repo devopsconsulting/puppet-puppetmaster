@@ -1,6 +1,6 @@
 production:
   adapter: mysql
-  database: foreman
-  username: foreman
-  password: namerof 
+  database: puppet
+  username: puppet
+  password: teppup
   host: localhost
