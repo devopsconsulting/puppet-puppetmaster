@@ -13,7 +13,7 @@ class puppetmaster::passenger {
     }
   }
 
-  class {'apache': }
+  include apache
 
   class {'apache::mod::passenger': }
   class {'apache::mod::ssl': } 
